@@ -1,0 +1,9 @@
+<%= form_with model: question do |f| %>
+  <p><%= f.label :body, 'question body' %></p>
+  <p><%= f.text_area :body, rows: 5, class: 'form-text-area' %></p>
+
+  <p class="mt"><%= f.label :user_id, 'user_id' %></p>
+  <p><%= f.text_field :user_id, class: 'form-text-field' %></p>
+
+  <p class="mt"><%= f.submit 'save', class: "button button-main" %></p>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Edit</h2>
+
+  <% if @user.errors.any? %>
+    <div class="mt">
+      <% @user.errors.full_messages.each do |message| %>
+        <p class="mb-sm text-red"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mt">
+    <%= form_with model: @user do |f| %>
+      <p><%= f.label :name, 'name' %></p>
+      <p><%= f.text_field :name %></p>
+
+      <p class="mt"><%= f.label :nickname, 'nickname' %></p>
+      <p><%= f.text_field :nickname %></p>
+
+      <p class="mt-lg text-sm">set empty</p>
+
+      <p><%= f.label :password, 'password' %></p>
+      <p><%= f.password_field :password %></p>
+
+      <p><%= f.label :password_confirmation, 'password_confirmation' %></p>
+      <p><%= f.password_field :password_confirmation %></p>
+
+      <p class="mt-lg">
+        <%= f.submit 'save', class: 'button button-main' %>
+        <span class="text-sm"> or <%= link_to 'return', :back %></span>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="mt-lg">
+    <%= button_to 'delete', user_path(@user), method: :delete, form: {data: { confirm: 'are you sure?' }, class: 'text-red text-sm'} %>
+  </div>
+</div>

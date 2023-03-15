@@ -1,0 +1,32 @@
+<div class="container">
+  <h2 class="title">Join us</h2>
+
+  <% if @user.errors.present? %>
+    <div class="mt">
+      <% @user.errors.full_messages.each do |message| %>
+        <p class="mb-sm text-red"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mt">
+    <%= form_with model: @user do |f| %>
+      <p><%= f.label :name, 'your name' %></p>
+      <p><%= f.text_field :name, class: 'form-text-field' %></p>
+
+      <p class="mt"><%= f.label :nickname, 'your nickname' %></p>
+      <p><%= f.text_field :nickname, class: 'form-text-field' %></p>
+
+      <p class="mt"><%= f.label :email, 'your email' %></p>
+      <p><%= f.text_field :email, class: 'form-text-field' %></p>
+
+      <p class="mt"><%= f.label :password, 'your password' %></p>
+      <p><%= f.password_field :password, class: 'form-text-field' %></p>
+
+      <p class="mt"><%= f.label :password_confirmation, 'password confirmation' %></p>
+      <p><%= f.password_field :password_confirmation, class: 'form-text-field' %></p>
+
+      <p class="mt-lg"><%= f.submit 'register', class: 'button button-main' %>
+    <% end %>
+  </div>
+</div>

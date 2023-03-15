@@ -11,6 +11,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class='wrapper'>
+      <div class='navbar'>
+        <p class="title-sm text-bold"><%= link_to 'ask me', root_path %></p>
+        <div>
+          <% if current_user.present? %>
+            <%= content_tag 'span', "@#{current_user.nickname}", class: 'mr-sm' %>
+            <%= link_to 'sign out', session_path, method: :delete, class: 'button button-yellow' %>
+          <% else %>
+            <%= link_to 'sign-up', new_user_path, class: 'button button-yellow mr-sm' %>
+            <%= link_to 'log-in', new_session_path, class: 'button button-yellow' %>
+          <% end %>
+        </div>
+      </div>
+      <% if flash.present? %>
+        <% unless flash[:notice].nil? %>
+          <p class="mb mt message message-notice"><%= flash[:notice] %></p>
+        <% end %>
+        <% unless flash[:alert].nil? %>
+          <p class="mb mt message message-alert"><%= flash[:alert] %></p>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
