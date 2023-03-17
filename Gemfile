@@ -53,3 +53,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'telegram-bot-ruby'
 gem 'active_interaction', '~> 4.1'
+# env variables
+gem 'figaro'
